@@ -1,0 +1,6 @@
+[submodule "messages"]
+	path = messages
+	url = git@github.com:chat-app-leoflalv/messages.git
+[submodule "gateway"]
+	path = gateway
+	url = git@github.com:chat-app-leoflalv/gateway.git
