@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: dockerfile.dev
+    ports:
+      - ${GATEWAY_PORT}:3001
+    volumes:
+      - ./gateway/src:/usr/src/app/src
+    command: cargo watch -c -x run
+    environment:
+      - PORT=3001
