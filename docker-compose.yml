@@ -5,11 +5,11 @@ services:
   gateway:
     build:
       context: ./gateway
-      dockerfile: dockerfile.dev
+      dockerfile: dockerfile
     ports:
-      - ${GATEWAY_PORT}:3001
+      - ${GATEWAY_PORT}:${GATEWAY_PORT}
     volumes:
       - ./gateway/src:/usr/src/app/src
     command: cargo watch -c -x run
     environment:
-      - PORT=3001
+      - PORT=${GATEWAY_PORT}
