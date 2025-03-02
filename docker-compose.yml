@@ -1,6 +1,10 @@
 version: '3'
 
 services:
+  nats-server:
+    image: nats:latest
+    ports:
+      - 8222:8222
 
   gateway:
     build:
