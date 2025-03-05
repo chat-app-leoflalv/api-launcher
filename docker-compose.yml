@@ -6,6 +6,19 @@ services:
     ports:
       - 8222:8222
 
+  messages:
+    build:
+      context: ./messages
+      dockerfile: dockerfile
+    ports:
+      - ${MESSAGES_PORT}:${MESSAGES_PORT}
+    volumes:
+      - ./messages/src:/usr/src/app/src
+    command: cargo watch -c -x run
+    environment:
+      - PORT=${MESSAGES_PORT}
+      - NATS_SERVERS=${NATS_SERVERS}
+
   gateway:
     build:
       context: ./gateway
@@ -17,3 +30,4 @@ services:
     command: cargo watch -c -x run
     environment:
       - PORT=${GATEWAY_PORT}
+      - NATS_SERVERS=${NATS_SERVERS}
